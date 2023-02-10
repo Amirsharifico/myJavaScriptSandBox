@@ -19,21 +19,16 @@ function createPost(post) {
   });
 }
 
-async function getPost() {
-
-try{
-   let newPost = await createPost({ 
-    title: "Post Three", 
-    body: "This is post three body" 
+function getPost() {
+  setTimeout(() => {
+    let output = "";
+    posts.forEach((post) => {
+      output += `<li>${post.title}</li>`;
     });
-  let output = "";
-  posts.forEach((post) => {
-    output += `<li>${post.title}</li>`;
-  });
-  document.body.innerHTML = output;  
-}catch(err){
-    
-}
- 
+    document.body.innerHTML = output;
+  }, 1000);
 }
 
+createPost({ title: "post three", body: "This is post three body" }).then(
+  getPost
+).catch;
